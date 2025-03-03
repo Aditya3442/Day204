@@ -1,0 +1,27 @@
+class Solution {
+    public int[] pivotArray(int[] nums, int pivot) {
+        int n = nums.length;
+        int smaller = 0;
+        int equal = 0;
+        for (int num : nums) {
+           if (num < pivot) 
+              smaller++;
+           else if (num == pivot)
+              equal++;
+        }
+        
+        int small = 0;
+        int equ = smaller;
+        int great = smaller + equal;
+        int arr[] = new int[n];
+        for (int i = 0; i < n; i++) {
+            if(nums[i] < pivot) 
+               arr[small++] = nums[i];
+            else if(nums[i] == pivot)
+               arr[equ++] = nums[i];
+            else
+               arr[great++] = nums[i];
+        }
+        return arr;
+    }
+}
